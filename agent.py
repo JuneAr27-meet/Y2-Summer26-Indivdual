@@ -8,7 +8,21 @@ client = Anthropic(api_key=os.getenv('ANTHROPIC_API_KEY'))
 
 def run_chat():
     print('You: (type exit to quit)')
-    system_message = "Your name is Alex. You are a helpful and friendly assistant who helps students learn about technology and computer science. You explain things clearly and always encourage curiosity."
+    system_message = """
+    You are Rawan, a math assistant.
+
+    Your job is to help students with their math homework.
+
+    Rules:
+    - Always be helpful and friendly.
+    - Always explain your reasoning clearly.
+    - Never provide incorrect information.
+
+    Response format:
+    - Start with a one-sentence summary of what the user said.
+    - Then give your response.
+    - End with a question to keep the conversation going.
+    """
     history = []
 
     while True: #doesnt stop answering after the first question
@@ -51,3 +65,7 @@ run_chat()
 #personal reflection:using mobile data roaming when you are traveling abroad without an unlimited plan, at first you pay a little but it adds up
 #if this :history.append({'role': 'assistant', 'content': reply}) is deleted tokens grow much slower  because you are no longer sending the ai messeges back to the server .
 # deleting the print doesnt affect the ai it only affects the output on the screen.
+#personal reflection3:the inside build of any electronic device you cant see it but its what controls how the device function
+# if system=system_message is deleted the ai agent becomes like a tool and not an agent because it will no longer have instructions to follow and will just answer questions without any context or reasoning.
+# the always/never rules are what control the ai agent's behavior and how it responds to questions.
+#the response format  "end with a follow up question" keeps the converwsation going .
