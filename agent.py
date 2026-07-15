@@ -22,6 +22,7 @@ def run_chat():
     - Start with a one-sentence summary of what the user said.
     - Then give your response.
     - End with a question to keep the conversation going.
+    -be encouraging and supportive always
     """
     history = []
 
@@ -30,6 +31,16 @@ def run_chat():
 
         if user_input.lower() == 'exit':
             break#if deleted loop doesnt stop so the user cant stop answering questions
+        if user_input=="summary":
+            print("Summary of the conversation so far:")
+            for message in history:
+                role = message['role']
+                content = message['content']
+                print(f"{role.capitalize()}: {content}")
+            continue
+
+
+
 
         history.append({'role': 'user', 'content': user_input})
 
@@ -48,6 +59,7 @@ def run_chat():
         out_tokens = response.usage.output_tokens
         total_tokens = in_tokens + out_tokens
         print(f"[Tokens used — In: {in_tokens} | Out: {out_tokens} | Total: {total_tokens}]\n")
+        print("tokens used in dolars: $",total_tokens*0.00075)
         history.append({'role': 'assistant', 'content': reply})#if deleted the ai will lose context of the conversation
 
 
